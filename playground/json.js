@@ -20,7 +20,7 @@ var originalNote = {
 };
 
 var originalNoteString = JSON.stringify(originalNote);
-fs.writeFileSync('notes.json', originalNotesString);
+fs.writeFileSync('notes.json', originalNoteString);
 
 var noteString = fs.readFileSync('notes.json');
 var note = JSON.parse(noteString);
