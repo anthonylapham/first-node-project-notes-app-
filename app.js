@@ -17,8 +17,18 @@ console.log('Yargs', yargs.argv);
 
 // process.env.
 
+
+
 if (command === 'add') {
-  notes.addNote(argv.title, argv.body);
+  var note = notes.addNote(argv.title, argv.body);
+  if(note){
+    console.log('Note created');
+    console.log('--');
+    console.log('Title: ' + note.title);
+    console.log('Body: ' + note.body);
+  }else{
+    console.log('This note already exists');
+  }
 } else if (command === 'read') {
   notes.getNote(argv.title);
 } else if (command === 'remove') {
