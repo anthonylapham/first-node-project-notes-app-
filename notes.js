@@ -2,15 +2,18 @@ console.log('Starting notes.js')
 
 const fs = require('fs');
 
+//function that gets notes from notes-data.json and turn them into strings
 var fetchNotes = () => {
   try {
     var notesString = fs.readFileSync('notes-data.json');
     return JSON.parse(notesString);
+    //if the note does not exist, it returns an empty array
   } catch (error) {
     return [];
   }
 }
 
+//function that saves and turns existing notes (from notes-data file) into strings
 var saveNotes = (notes) => {
   fs.writeFileSync('notes-data.json', JSON.stringify(notes));
 }
@@ -22,17 +25,20 @@ var addNote = function(title, body) {
     body: body
   };
 
+  //checks for duplicate notes by seeing if the titles match
   var duplicateNotes = notes.filter((note) => note.title === title);
 
 
-  if (duplicateNotes.lenght === 0) {
+  if (duplicateNotes.length === 0) {
     notes.push(note);
     saveNotes(notes);
     return note;
   }
 };
 
+//this pulls all the notes from the notes-data file for our list command
 var getAll = () => {
+  return fetchNotes();
   console.log('Getting all notes');
 };
 
@@ -55,7 +61,6 @@ var removeNote = (title) => {
 };
 
 var logNotes = (note) => {
-  debugger;
   console.log('--');
   console.log('Title:' + note.title);
   console.log('Body:' + note.body);

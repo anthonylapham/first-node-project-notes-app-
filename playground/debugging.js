@@ -1,12 +1,14 @@
-var person = {
-  name: 'Anthony'
-};
+(function(exports, require, module, _filename, _dirname){
+  var person = {
+    name: 'Anthony'
+  };
 
 
-person.age = 28;
+  person.age = 28;
 
-debugger;
+  debugger;
 
-person.name = 'A.J.';
+  person.name = 'A.J.';
 
-console.log(person);
+  console.log(person);
+});
